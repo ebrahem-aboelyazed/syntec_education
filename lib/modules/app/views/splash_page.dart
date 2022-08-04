@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:education/modules/app/cubits/app_cubit.dart';
+import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,11 +17,11 @@ class SplashPage extends StatelessWidget {
       buildWhen: (previous, current) => current is AppFailure,
       listener: (context, state) {
         if (state is AppFirstLaunch) {
-          //TODO: Navigate to intro screen
+          context.router.replaceAll([const IntroRoute()]);
         } else if (state is AppAuthenticated) {
-          //TODO: Navigate to home screen
+          context.router.replaceAll([const HomeRoute()]);
         } else if (state is AppNotAuthenticated) {
-          //TODO: Navigate to auth screen
+          context.router.replaceAll([const LoginRoute()]);
         } else if (state is AppFailure) {
           showErrorSnackBar(context, state.failure);
         }

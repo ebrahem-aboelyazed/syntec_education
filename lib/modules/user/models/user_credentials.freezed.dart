@@ -107,7 +107,7 @@ class __$$_UserCredentialsCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 1, adapterName: 'UserCredentialsAdapter')
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_UserCredentials implements _UserCredentials {
   const _$_UserCredentials(

@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:education/helpers/helpers.dart';
+import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
@@ -19,9 +21,7 @@ class ProfileInfoView extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: ElevatedButton.icon(
-                onPressed: () {},
-                //TODO: Add Navigation
-                //onPressed: () => Get.toNamed(Paths.editProfile),
+                onPressed: () => context.pushRoute(const EditProfileRoute()),
                 icon: const Icon(Icons.edit),
                 label: const Text('Edit'),
                 style: ElevatedButton.styleFrom(

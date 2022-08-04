@@ -20,8 +20,9 @@ class CoursesService {
     try {
       final response = await _baseService.getData(Endpoints.courses);
       return response.fold(Left.new, (r) {
-        final json = jsonDecode(r.body) as List<Map<String, dynamic>>;
-        return Right(json.map(Course.fromJson).toList());
+        final json = jsonDecode(r.body) as List<dynamic>;
+        final castedData = List<Map<String, dynamic>>.from(json);
+        return Right(castedData.map(Course.fromJson).toList());
       });
     } catch (_) {
       return const Left(Failure());
@@ -48,8 +49,9 @@ class CoursesService {
         '${Endpoints.courses}$id/${Endpoints.sections}',
       );
       return response.fold(Left.new, (r) {
-        final json = jsonDecode(r.body) as List<Map<String, dynamic>>;
-        return Right(json.map(Section.fromJson).toList());
+        final json = jsonDecode(r.body) as List<dynamic>;
+        final castedData = List<Map<String, dynamic>>.from(json);
+        return Right(castedData.map(Section.fromJson).toList());
       });
     } catch (_) {
       return const Left(Failure());

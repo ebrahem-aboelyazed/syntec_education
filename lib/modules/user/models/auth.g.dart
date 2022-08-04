@@ -31,6 +31,7 @@ SignUpModel _$SignUpModelFromJson(Map<String, dynamic> json) => SignUpModel(
       lastUpdate: json['last_update'] as String?,
       lastLogin: json['last_login'] as String?,
       ipAddress: json['ip_address'] as String?,
+      type: json['type'] as int? ?? 1,
     );
 
 Map<String, dynamic> _$SignUpModelToJson(SignUpModel instance) =>
@@ -48,4 +49,5 @@ Map<String, dynamic> _$SignUpModelToJson(SignUpModel instance) =>
       'last_update': instance.lastUpdate,
       'last_login': instance.lastLogin,
       'ip_address': instance.ipAddress,
+      'type': instance.type,
     };

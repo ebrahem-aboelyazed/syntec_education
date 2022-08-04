@@ -11,11 +11,9 @@ class ContentCubit extends Cubit<ContentState> {
 
   final ContentService _contentService = ContentService.instance;
 
-  Future<void> getContent() async {
-    //TODO: add id here
-    const id = 1;
+  Future<void> getContent(int contentId) async {
     emit(ContentLoading());
-    final response = await _contentService.getContentById(id: id);
+    final response = await _contentService.getContentById(id: contentId);
     response.fold(onFailure, (content) => emit(ContentLoaded(content)));
   }
 

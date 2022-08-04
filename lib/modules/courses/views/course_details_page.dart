@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:education/common/widgets/cached_image.dart';
 import 'package:education/common/widgets/custom_future_builder.dart';
 import 'package:education/common/widgets/details_loading_view.dart';
@@ -10,7 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CourseDetailsPage extends StatelessWidget {
-  const CourseDetailsPage({super.key});
+  const CourseDetailsPage({
+    @PathParam('course_id') required this.courseId,
+    super.key,
+  });
+
+  final int courseId;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,7 @@ class CourseDetailsPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: CustomFutureBuilder<List<dynamic>>(
-          future: cubit.getCourseDetails(),
+          future: cubit.getCourseDetails(courseId),
           onLoading: const DetailsLoadingView(),
           onSuccess: (snapshot) {
             final course = snapshot.data![0] as Course;
@@ -29,7 +35,10 @@ class CourseDetailsPage extends StatelessWidget {
                 ? SystemUiOverlayStyle.light
                 : SystemUiOverlayStyle.dark;*/
             return Scaffold(
-              bottomSheet: EnrolmentButton(hasEnrolled: hasEnrolled),
+              bottomSheet: EnrolmentButton(
+                hasEnrolled: hasEnrolled,
+                courseId: courseId,
+              ),
               body: CustomScrollView(
                 slivers: [
                   SliverAppBar(

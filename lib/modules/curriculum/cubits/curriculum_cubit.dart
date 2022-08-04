@@ -10,13 +10,14 @@ class CurriculumCubit extends Cubit<CurriculumState> {
   CurriculumCubit() : super(CurriculumInitial());
   final CurriculumService _curriculumService = CurriculumService.instance;
 
-  Future<void> getCurriculum({bool showLoading = true}) async {
-    //TODO: add id here
-    //final id = int.tryParse(Get.parameters['course_id']!);
+  Future<void> getCurriculum({
+    required int courseId,
+    bool showLoading = true,
+  }) async {
     if (showLoading) {
       emit(CurriculumLoading());
     }
-    final response = await _curriculumService.getCurriculum(id: 1);
+    final response = await _curriculumService.getCurriculum(id: courseId);
     response.fold(
       onFailure,
       (curriculum) => emit(CurriculumLoaded(curriculum)),

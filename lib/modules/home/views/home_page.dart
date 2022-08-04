@@ -1,53 +1,50 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:education/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-/*
-GetBuilder<BottomNavController>(
-      init: BottomNavController(),
-      builder: (BottomNavController controller) {
-        return Scaffold(
-          bottomNavigationBar: const BottomNav(),
-          drawer: const AppDrawer(),
-          body: PageTransitionSwitcher(
-            child: WillPopScope(
-              onWillPop: () async {
-                if (controller.currentNavIndex.value != 0) {
-                  controller.currentNavIndex.value = 0;
-                  return false;
-                } else {
-                  return true;
-                }
-              },
-              child: PageView(
-                controller: controller.pageController,
-                onPageChanged: (value) {
-                  controller.currentNavIndex.value = value;
-                },
-                children: controller.pages,
-              ),
+    return AutoTabsScaffold(
+      routes: const [
+        CoursesWrapperRoute(),
+        LearningProgressRoute(),
+        ProfileRoute(),
+        ProfileRoute(),
+      ],
+      bottomNavigationBuilder: (_, tabsRouter) {
+        return BottomNavigationBar(
+          currentIndex: tabsRouter.activeIndex,
+          onTap: tabsRouter.setActiveIndex,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.blueAccent,
+          unselectedItemColor: Colors.black,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          iconSize: 20,
+          items: const [
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.house),
+              label: 'Home',
             ),
-            transitionBuilder: (
-              Widget child,
-              Animation<double> primaryAnimation,
-              Animation<double> secondaryAnimation,
-            ) {
-              return FadeThroughTransition(
-                fillColor: Colors.transparent,
-                animation: primaryAnimation,
-                secondaryAnimation: secondaryAnimation,
-                child: child,
-              );
-            },
-          ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.bookOpen),
+              label: 'Learn',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.cloudArrowDown),
+              label: 'Downloads',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.circleUser),
+              label: 'Profile',
+            ),
+          ],
         );
       },
     );
- */
+  }
+}

@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:education/common/widgets/cached_image.dart';
 import 'package:education/modules/courses/courses.dart';
+import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +13,9 @@ class CourseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      //TODO: Add Navigation here
-      //onTap: () => Get.toNamed('${Paths.course}/${course.id}'),
+      onTap: () {
+        context.router.pushNamed('/course/${course.id}/curriculum');
+      },
       child: Card(
         elevation: 1.5,
         child: Column(

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:education/common/widgets/empty_view.dart';
 import 'package:education/modules/courses/cubits/courses_cubit.dart';
 import 'package:education/modules/courses/views/widgets/course_widget.dart';
@@ -18,29 +19,26 @@ class _CoursesPageState extends State<CoursesPage>
   Widget build(BuildContext context) {
     super.build(context);
     final cubit = context.read<CoursesCubit>();
-    return BlocProvider<CoursesCubit>(
-      create: (context) => CoursesCubit(),
-      child: BlocConsumer<CoursesCubit, CoursesState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return RefreshIndicator(
-            onRefresh: cubit.getCourses,
-            child: CustomScrollView(
-              slivers: [
-                const SliverAppBar(
-                  floating: true,
-                  snap: true,
-                  title: Text('Courses'),
-                  centerTitle: true,
-                ),
-                CoursesView(state: state),
-              ],
-            ),
-          );
-        },
-      ),
+    return BlocConsumer<CoursesCubit, CoursesState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return RefreshIndicator(
+          onRefresh: cubit.getCourses,
+          child: CustomScrollView(
+            slivers: [
+              const SliverAppBar(
+                floating: true,
+                snap: true,
+                title: Text('Courses'),
+                centerTitle: true,
+              ),
+              CoursesView(state: state),
+            ],
+          ),
+        );
+      },
     );
   }
 

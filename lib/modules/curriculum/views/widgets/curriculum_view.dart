@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:education/modules/curriculum/models/curriculum.dart';
+import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -39,8 +41,9 @@ class CurriculumView extends StatelessWidget {
                       ),
                       leading: const Icon(Icons.book),
                       trailing: const Icon(Icons.double_arrow),
-                      //TODO: Add Navigation here
-                      //onTap: () => controller.navigateToContent(content.id),
+                      onTap: () {
+                        context.pushRoute(ContentRoute(contentId: content.id));
+                      },
                     );
                   },
                 ),

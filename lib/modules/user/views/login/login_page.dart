@@ -1,9 +1,11 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:education/common/fields/name_field.dart';
 import 'package:education/common/fields/password_field.dart';
 import 'package:education/common/widgets/rounded_button.dart';
 import 'package:education/modules/user/user.dart';
 import 'package:education/modules/user/views/widgets/custom_view.dart';
+import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +26,8 @@ class LoginPage extends StatelessWidget {
               listener: (context, state) {
                 if (state is UserFailure) {
                   showErrorSnackBar(context, state.failure);
+                } else if (state is UserLoggedIn) {
+                  context.router.replaceAll([const HomeRoute()]);
                 }
               },
               builder: (context, state) {
@@ -114,9 +118,8 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          //TODO: Add Navigation here
-                          onPressed: () {},
-                          //Get.toNamed(Paths.signUp),
+                          onPressed: () =>
+                              context.pushRoute(const SignUpRoute()),
                           child: const Text(
                             'Sign Up',
                             style: TextStyle(

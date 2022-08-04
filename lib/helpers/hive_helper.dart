@@ -73,26 +73,12 @@ class HiveHelper {
       ..registerAdapter(UserCredentialsAdapter());
   }
 
-  // Saving data methods
-  Future<void> saveIntroStatusAndNavigate() async {
-    await settingsBox.put(AppConstants.hasShownIntro, true);
-    if (hasLoggedIn) {
-      //TODO: Add Navigation here
-      //await Get.offAll(() => const HomePage(), routeName: '/');
-    } else {
-      //TODO: Add Navigation here
-      //await Get.offAllNamed(Paths.login);
-    }
-  }
-
   Future<void> saveUserData(User user) async {
     final userBox = Hive.box<User?>(AppConstants.user);
     if (userBox.isNotEmpty) {
       await userBox.clear();
     }
     await userBox.add(user);
-    //TODO: Add Navigation here
-    //return Get.offAll(() => const HomePage(), routeName: '/');
   }
 
   Future<void> saveUserCredentials(UserCredentials userCredentials) async {

@@ -27,10 +27,8 @@ class CoursesCubit extends Cubit<CoursesState> {
     );
   }
 
-  Future<Course> getCourseById() async {
-    //TODO: add id here
-    //final id = int.tryParse(Get.parameters['course_id']!);
-    final response = await _coursesService.getCourseById(id: 1);
+  Future<Course> getCourseById(int courseId) async {
+    final response = await _coursesService.getCourseById(id: courseId);
     return response.fold(
       (failure) {
         onFailure(failure);
@@ -40,18 +38,16 @@ class CoursesCubit extends Cubit<CoursesState> {
     );
   }
 
-  Future<List<dynamic>> getCourseDetails() async {
-    final course = await getCourseById();
-    final sections = await getCourseSections();
+  Future<List<dynamic>> getCourseDetails(int courseId) async {
+    final course = await getCourseById(courseId);
+    final sections = await getCourseSections(courseId);
     //final dominateColor = await getImageDominateColor(course.image);
-    final enrolled = await hasEnrolledInCourse();
+    final enrolled = await hasEnrolledInCourse(courseId);
     return [course, sections, enrolled];
   }
 
-  Future<List<Section>> getCourseSections() async {
-    //TODO: add id here
-    //final id = int.tryParse(Get.parameters['course_id']!);
-    final response = await _coursesService.getCourseSections(id: 1);
+  Future<List<Section>> getCourseSections(int courseId) async {
+    final response = await _coursesService.getCourseSections(id: courseId);
     return response.fold(
       (failure) {
         onFailure(failure);
@@ -61,10 +57,11 @@ class CoursesCubit extends Cubit<CoursesState> {
     );
   }
 
-  Future<bool> enrollInCourse() async {
-    //TODO: add id here
-    //final id = int.tryParse(Get.parameters['course_id']!);
-    final response = await _coursesService.enrollInCourse(id: 1);
+  Future<bool> enrollInCourse(
+    int courseId,
+    void Function(bool enrolled) onEnrolled,
+  ) async {
+    final response = await _coursesService.enrollInCourse(id: courseId);
     return response.fold(
       (failure) {
         onFailure(failure);
@@ -72,26 +69,19 @@ class CoursesCubit extends Cubit<CoursesState> {
       },
       (enrolled) {
         if (enrolled) {
-          navigateToCurriculum();
+          onEnrolled.call(enrolled);
         }
         return true;
       },
     );
   }
 
-  Future<bool> hasEnrolledInCourse() async {
-    //TODO: add id here
-    //final id = int.tryParse(Get.parameters['course_id']!);
-    final response = await _coursesService.hasEnrolledInCourse(id: 1);
+  Future<bool> hasEnrolledInCourse(int courseId) async {
+    final response = await _coursesService.hasEnrolledInCourse(id: courseId);
     return response.fold(
       (failure) => false,
       (hasEnrolled) => hasEnrolled,
     );
-  }
-
-  void navigateToCurriculum() {
-    //TODO: Add Navigation here
-    //Get.toNamed('${Get.currentRoute}${Paths.curriculum}');
   }
 
   Future<Color> getImageDominateColor(String url) =>
