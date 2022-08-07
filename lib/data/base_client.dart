@@ -12,6 +12,7 @@ class BaseClient extends http.BaseClient {
   @override
   Future<http.StreamedResponse> send(http.BaseRequest request) async {
     final token = await _tokenManager.getAccessToken();
+    print('Token =======>$token');
     request.headers['Authorization'] = 'Bearer $token';
     return _inner.send(request);
   }

@@ -7,7 +7,7 @@ part 'user_credentials.g.dart';
 
 @freezed
 class UserCredentials with _$UserCredentials {
-  @HiveType(typeId: 1, adapterName: 'UserCredentialsAdapter')
+  @HiveType(typeId: 1)
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory UserCredentials({
     @HiveField(0) @Default('') String access,

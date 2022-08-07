@@ -73,7 +73,7 @@ class _IntroPageState extends State<IntroPage> {
     if (hasLoggedIn) {
       await context.replaceRoute(const HomeRoute());
     } else {
-      await context.replaceRoute(const LoginRoute());
+      await context.replaceRoute( LoginRoute());
     }
   }
 }

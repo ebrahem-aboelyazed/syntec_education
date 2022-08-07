@@ -5,8 +5,8 @@ part 'auth.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class LoginModel {
   LoginModel({
-    this.username,
-    this.password,
+    this.username = '',
+    this.password = '',
   });
 
   factory LoginModel.fromJson(Map<String, dynamic> json) =>
@@ -21,20 +21,22 @@ class LoginModel {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SignUpModel {
   SignUpModel({
-    this.firstName,
-    this.lastName,
-    this.username,
-    this.email,
-    this.password,
-    this.phoneNumber,
-    this.secondPhoneNumber,
-    this.birthDate,
-    this.country,
-    this.city,
-    this.lastUpdate,
-    this.lastLogin,
-    this.ipAddress,
-    this.type = 1,
+    this.firstName = '',
+    this.lastName = '',
+    this.username = '',
+    this.email = '',
+    this.password = '',
+    this.phoneNumber = '',
+    this.secondPhoneNumber = '',
+    this.parentPhoneNumber = '',
+    this.birthDate = '',
+    this.country = '',
+    this.city = '',
+    this.lastUpdate = '',
+    this.lastLogin = '',
+    this.ipAddress = '',
+    this.grade = '5',
+    this.notes = '',
   });
 
   factory SignUpModel.fromJson(Map<String, dynamic> json) =>
@@ -49,11 +51,13 @@ class SignUpModel {
   String? password;
   String? phoneNumber;
   String? secondPhoneNumber;
+  String? parentPhoneNumber;
   String? birthDate;
   String? country;
   String? city;
   String? lastUpdate;
   String? lastLogin;
   String? ipAddress;
-  int? type;
+  String? grade;
+  String? notes;
 }

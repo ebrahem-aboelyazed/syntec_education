@@ -14,3 +14,12 @@ void showErrorSnackBar(BuildContext context, Failure failure) {
     ),
   );
 }
+
+void showWarningSnackBar(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Warning\n$message'),
+      backgroundColor: Colors.yellowAccent,
+    ),
+  );
+}

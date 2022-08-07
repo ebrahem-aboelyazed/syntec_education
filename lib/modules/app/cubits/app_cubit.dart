@@ -20,6 +20,9 @@ class AppCubit extends Cubit<AppState> {
 
       /// Checking States of the app
       await checkStates();
+
+      /// Observing authentication status
+      await observeAuthentication();
     } catch (e) {
       emit(AppFailure(Failure(message: e.toString())));
     }
@@ -33,5 +36,16 @@ class AppCubit extends Cubit<AppState> {
     } else {
       emit(AppFirstLaunch());
     }
+  }
+
+  Future<void> observeAuthentication() async {
+    _hiveHelper.userBox.watch().listen((event) {
+      final value = event.value;
+      print('Value =====>$value');
+      if (value == null) {
+        emit(AppSessionExpired());
+        emit(AppNotAuthenticated());
+      }
+    });
   }
 }

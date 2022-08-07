@@ -41,12 +41,16 @@ class AppRouter extends _i10.RootStackRouter {
           routeData: routeData, child: const _i2.HomePage());
     },
     LoginRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginRouteArgs>(
+          orElse: () => const LoginRouteArgs());
       return _i10.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i3.LoginPage());
+          routeData: routeData, child: _i3.LoginPage(key: args.key));
     },
     SignUpRoute.name: (routeData) {
+      final args = routeData.argsAs<SignUpRouteArgs>(
+          orElse: () => const SignUpRouteArgs());
       return _i10.AdaptivePage<dynamic>(
-          routeData: routeData, child: const _i3.SignUpPage());
+          routeData: routeData, child: _i3.SignUpPage(key: args.key));
     },
     EditProfileRoute.name: (routeData) {
       return _i10.AdaptivePage<dynamic>(
@@ -159,18 +163,43 @@ class HomeRoute extends _i10.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.LoginPage]
-class LoginRoute extends _i10.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login');
+class LoginRoute extends _i10.PageRouteInfo<LoginRouteArgs> {
+  LoginRoute({_i11.Key? key})
+      : super(LoginRoute.name, path: '/login', args: LoginRouteArgs(key: key));
 
   static const String name = 'LoginRoute';
 }
 
+class LoginRouteArgs {
+  const LoginRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginRouteArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [_i3.SignUpPage]
-class SignUpRoute extends _i10.PageRouteInfo<void> {
-  const SignUpRoute() : super(SignUpRoute.name, path: '/sign_up');
+class SignUpRoute extends _i10.PageRouteInfo<SignUpRouteArgs> {
+  SignUpRoute({_i11.Key? key})
+      : super(SignUpRoute.name,
+            path: '/sign_up', args: SignUpRouteArgs(key: key));
 
   static const String name = 'SignUpRoute';
+}
+
+class SignUpRouteArgs {
+  const SignUpRouteArgs({this.key});
+
+  final _i11.Key? key;
+
+  @override
+  String toString() {
+    return 'SignUpRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

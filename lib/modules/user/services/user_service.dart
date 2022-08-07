@@ -41,6 +41,7 @@ class UserService {
     required SignUpModel model,
   }) async {
     try {
+      print('Model =====>${model.toJson()}');
       final response = await http.post(
         Uri.parse('${Endpoints.baseUrl}${Endpoints.register}'),
         body: model.toJson(),

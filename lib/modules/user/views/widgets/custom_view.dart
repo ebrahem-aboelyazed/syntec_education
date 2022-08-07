@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CustomView extends StatelessWidget {
-  const CustomView({required this.text, super.key});
+  const CustomView({
+    required this.text,
+    this.height = 170,
+    this.showBack = true,
+    super.key,
+  });
+
   final String text;
+  final double height;
+  final bool showBack;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +19,7 @@ class CustomView extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: 200,
+            height: height,
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
             ),
@@ -26,10 +34,13 @@ class CustomView extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
+          Positioned(
             left: 5,
             top: 5,
-            child: BackButton(color: Colors.white),
+            child: Visibility(
+              visible: showBack,
+              child: const BackButton(color: Colors.white),
+            ),
           )
         ],
       ),

@@ -6,8 +6,7 @@ class Endpoints {
 
   // User
   static const String login = 'login/';
-  static const String register = 'register/';
-  static const String students = 'register/';
+  static const String register = 'register/student/';
   static const String refresh = '${login}refresh/';
   static const String users = 'users/';
   static const String userInfo = '${users}me';

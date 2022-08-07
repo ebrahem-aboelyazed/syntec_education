@@ -1,10 +1,9 @@
 import 'package:education/common/fields/password_field.dart';
-import 'package:education/common/widgets/rounded_button.dart';
+import 'package:education/common/widgets/process_button.dart';
 import 'package:education/modules/user/user.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class ChangePasswordView extends StatelessWidget {
   const ChangePasswordView({super.key});
@@ -36,11 +35,10 @@ class ChangePasswordView extends StatelessWidget {
                 hint: 'New Password',
               ),
               const SizedBox(height: Dimensions.paddingDefault),
-              RoundedButton(
+              ProcessButton(
                 text: 'Submit',
                 onPressed: () {},
-                //TODO: Change button
-                controller: RoundedLoadingButtonController(),
+                buttonState: cubit.buttonState,
               ),
               const SizedBox(height: Dimensions.paddingDefault),
             ],

@@ -4,6 +4,7 @@ import 'package:education/helpers/helpers.dart';
 import 'package:education/modules/user/user.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart' show GlobalKey, FormState;
+import 'package:progress_state_button/progress_button.dart';
 
 part 'user_state.dart';
 
@@ -71,5 +72,13 @@ class UserCubit extends Cubit<UserState> {
 
   Future<void> onFailure(Failure failure) async {
     emit(UserFailure(failure));
+  }
+
+  ButtonState get buttonState {
+    if (state is UserLoading) {
+      return ButtonState.loading;
+    } else {
+      return ButtonState.idle;
+    }
   }
 }

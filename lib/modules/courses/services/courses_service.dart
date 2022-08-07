@@ -24,7 +24,8 @@ class CoursesService {
         final castedData = List<Map<String, dynamic>>.from(json);
         return Right(castedData.map(Course.fromJson).toList());
       });
-    } catch (_) {
+    } catch (e) {
+      print('Error =======>${e.toString()}');
       return const Left(Failure());
     }
   }

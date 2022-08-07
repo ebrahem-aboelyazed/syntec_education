@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:education/modules/learning/models/learning_progress.dart';
-import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,7 @@ class LearningProgressCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          context.pushRoute(CurriculumRoute());
+          context.router.pushNamed('/course/1');
         },
         child: Container(
           padding: const EdgeInsets.symmetric(

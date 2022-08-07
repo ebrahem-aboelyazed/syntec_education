@@ -54,8 +54,6 @@ class TokenManager {
       return credentials.access;
     } else if (response.statusCode == 401) {
       await _hiveHelper.clearUserData();
-      // Show SnackBar here
-      //showErrorSnackBar(const Failure(message: 'Your session has expired'));
       return null;
     } else {
       return null;

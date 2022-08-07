@@ -216,7 +216,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 
-@HiveType(typeId: 0, adapterName: 'UserAdapter')
+@HiveType(typeId: 0)
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$_User implements _User {
   const _$_User(

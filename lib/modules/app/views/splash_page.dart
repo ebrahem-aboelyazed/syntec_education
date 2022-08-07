@@ -21,7 +21,7 @@ class SplashPage extends StatelessWidget {
         } else if (state is AppAuthenticated) {
           context.router.replaceAll([const HomeRoute()]);
         } else if (state is AppNotAuthenticated) {
-          context.router.replaceAll([const LoginRoute()]);
+          context.router.replaceAll([LoginRoute()]);
         } else if (state is AppFailure) {
           showErrorSnackBar(context, state.failure);
         }

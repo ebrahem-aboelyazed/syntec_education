@@ -93,7 +93,5 @@ class HiveHelper {
   Future<void> clearUserData() async {
     await Hive.box<UserCredentials?>(AppConstants.userCredentials).clear();
     await Hive.box<User?>(AppConstants.user).clear();
-    //TODO: Add Navigation here
-    //return Get.offAllNamed(Paths.login);
   }
 }

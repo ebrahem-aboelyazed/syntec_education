@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:education/common/widgets/cached_image.dart';
 import 'package:education/modules/courses/courses.dart';
-import 'package:education/routes/app_router.gr.dart';
 import 'package:education/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +13,8 @@ class CourseWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.pushNamed('/course/${course.id}/curriculum');
+        context.router.parent<StackRouter>()?.pushNamed('/course/${course.id}');
+
       },
       child: Card(
         elevation: 1.5,

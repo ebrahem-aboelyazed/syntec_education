@@ -9,7 +9,7 @@ part 'user.g.dart';
   when: FreezedWhenOptions(maybeWhen: false),
 )
 class User with _$User {
-  @HiveType(typeId: 0, adapterName: 'UserAdapter')
+  @HiveType(typeId: 0)
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory User({
     @HiveField(1) @Default('') String firstName,

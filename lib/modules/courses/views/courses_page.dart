@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:education/common/widgets/empty_view.dart';
 import 'package:education/modules/courses/cubits/courses_cubit.dart';
 import 'package:education/modules/courses/views/widgets/course_widget.dart';

@@ -19,6 +19,11 @@ class AppNotAuthenticated extends AppState {
   List<Object> get props => [];
 }
 
+class AppSessionExpired extends AppState {
+  @override
+  List<Object> get props => [];
+}
+
 class AppLoading extends AppState {
   @override
   List<Object> get props => [];
